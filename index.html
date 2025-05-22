@@ -1,122 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soumya Kumar Sinha - Portfolio</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Soumya Kumar Sinha - Portfolio</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  :root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #1e293b;
+    --link-color: #1e40af;
+    --link-hover: #374fc6;
+    --input-bg: #fff;
+    --input-border: #ccc;
+  }
+  [data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #eee;
+    --header-bg: #0f172a;
+    --link-color: #82aaff;
+    --link-hover: #a1c6ff;
+    --input-bg: #222;
+    --input-border: #444;
+  }
+
+  /* Header */
+  header {
+    background-color: var(--header-bg);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.8em;
+  }
+  header p {
+    font-size: 1.2em;
+    margin-top: 0.3em;
+    font-weight: 300;
+  }
+
+  /* Sections */
+  .section {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+  }
+  .section:nth-child(2) { animation-delay: 0.3s; }
+  .section:nth-child(3) { animation-delay: 0.6s; }
+  .section:nth-child(4) { animation-delay: 0.9s; }
+  .section:nth-child(5) { animation-delay: 1.2s; }
+  .section:nth-child(6) { animation-delay: 1.5s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-    header {
-      background-color: #1e293b;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+  }
+
+  h2 {
+    border-bottom: 3px solid var(--link-color);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+  }
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 25px 10px;
+    background-color: var(--header-bg);
+    color: white;
+    font-weight: 300;
+  }
+
+  /* Contact Icons */
+  .icon-links a {
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon-links svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--link-color);
+    transition: fill 0.3s;
+  }
+  .icon-links a:hover svg {
+    fill: var(--link-hover);
+  }
+
+  /* Contact Form */
+  form {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+  form label {
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  form input, form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1.5px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s;
+  }
+  form input:focus, form textarea:focus {
+    border-color: var(--link-color);
+    outline: none;
+  }
+  form button {
+    background-color: var(--link-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  form button:hover {
+    background-color: var(--link-hover);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
     header h1 {
-      margin: 0;
-      font-size: 2.5em;
+      font-size: 2em;
     }
-    header p {
-      font-size: 1.1em;
+    h2 {
+      font-size: 1.5em;
     }
-    .section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .section h2 {
-      border-bottom: 2px solid #1e293b;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      font-size: 1.8em;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    a {
-      color: #1e40af;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      background-color: #1e293b;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: 40px;
-    }
-  </style>
+  }
+
+  /* Dark Mode Toggle Button */
+  #darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--header-bg);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Soumya Kumar Sinha</h1>
-    <p>B.Tech IT Student | KIIT University | Passionate about Technology & Innovation</p>
-  </header>
+<header>
+  <h1>Soumya Kumar Sinha</h1>
+  <p>B.Tech IT Student | KIIT University | Passionate about Technology & Innovation</p>
+</header>
 
-  <div class="section" id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a Computer Science student currently pursuing my B.Tech in Information Technology at KIIT University (2023–2027).
-      I'm passionate about learning cutting-edge technologies, especially in the fields of computational data science, artificial intelligence, and software development.
-      I enjoy building projects, solving problems, and continuously improving my skills through real-world challenges and online certifications.
-    </p>
+<div class="section" id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a Computer Science student currently pursuing my B.Tech in Information Technology at KIIT University (2023–2027).
+    I'm passionate about learning cutting-edge technologies, especially in the fields of computational data science, artificial intelligence, and software development.
+    I enjoy building projects, solving problems, and continuously improving my skills through real-world challenges and online certifications.
+  </p>
+</div>
+
+<div class="section" id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>Python</li>
+    <li>Java</li>
+    <li>C/C++</li>
+    <li>HTML & CSS</li>
+    <li>Data Structures & Algorithms</li>
+    <li>Data Science (Basics)</li>
+  </ul>
+</div>
+
+<div class="section" id="certifications">
+  <h2>Certifications</h2>
+  <ul>
+    <li>MITx – Computational Data Science in Physics (Online)</li>
+  </ul>
+</div>
+
+<div class="section" id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>Coming soon: Your GitHub projects will be listed here!</li>
+  </ul>
+</div>
+
+<div class="section" id="contact">
+  <h2>Contact</h2>
+  <div class="icon-links" style="margin-bottom: 20px;">
+    <a href="mailto:soumyasinha2603@gmail.com" title="Email" aria-label="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2 .5v11h16v-11H4zm8 6.5L4.5 7h15L12 13z"/></svg>
+    </a>
+    <a href="https://github.com/soumyasinha2603" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.648.5.5 5.648.5 12c0 5.093 3.292 9.414 7.865 10.954.575.105.783-.25.783-.554 0-.273-.01-1-.015-1.963-3.2.695-3.877-1.54-3.877-1.54-.523-1.33-1.277-1.684-1.277-1.684-1.042-.713.08-.7.08-.7 1.153.08 1.76 1.184 1.76 1.184 1.025 1.755 2.69 1.248 3.343.954.105-.743.4-1.247.726-1.535-2.556-.29-5.243-1.28-5.243-5.69 0-1.257.448-2.286 1.182-3.093-.12-.29-.513-1.458.112-3.04 0 0 .965-.308 3.163 1.18a10.97 10.97 0 012.88-.388c.977.005 1.963.132 2.88.388 2.195-1.488 3.157-1.18 3.157-1.18.627 1.58.234 2.748.115 3.04.737.807 1.18 1.836 1.18 3.093 0 4.417-2.695 5.395-5.26 5.676.412.356.78 1.055.78 2.127 0 1.536-.014 2.776-.014 3.152 0 .308.2.665.79.553C20.708 21.41 24 17.095 24 12c0-6.352-5.148-11.5-12-11.5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/soumya-sinha-0091ab254/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.001 5.001A2.5 2.5 0 014.98 3.5zM3 8.6h3.96V21H3V8.6zm7.6 0h3.795v1.7h.053c.528-1 1.82-2.05 3.75-2.05 4.012 0 4.75 2.65 4.75 6.1V21h-3.96v-6.75c0-1.61-.03-3.7-2.25-3.7-2.25 0-2.59 1.75-2.59 3.56V21h-3.96V8.6z"/></svg>
+    </a>
   </div>
 
-  <div class="section" id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>Java</li>
-      <li>C/C++</li>
-      <li>HTML & CSS</li>
-      <li>Data Structures & Algorithms</li>
-      <li>Data Science (Basics)</li>
-    </ul>
-  </div>
+  <form
+  action="https://formspree.io/f/xgvkbael" method="POST">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required />
 
-  <div class="section" id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>MITx – Computational Data Science in Physics (Online)</li>
-      <!-- Add more if you earn them -->
-    </ul>
-  </div>
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="_replyto" placeholder="Your email" required />
 
-  <div class="section" id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>Coming soon: Your GitHub projects will be listed here!</li>
-      <!-- Example:
-      <li><a href="https://github.com/soumyasinha2603/physics-simulation">Physics Simulation – based on MITx course</a></li>
-      -->
-    </ul>
-  </div>
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" rows="5" placeholder="Your message here" required></textarea>
 
-  <div class="section" id="contact">
-    <h2>Contact</h2>
-    <ul>
-      <li>Email: <a href="mailto:soumyasinha2603@gmail.com">soumyasinha2603@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/soumyasinha2603" target="_blank">soumyasinha2603</a></li>
-      <li>LinkedIn: <a href="YOUR_LINKEDIN_URL_HERE" target="_blank">Add Your LinkedIn</a></li>
-    </ul>
-  </div>
+    <button type="submit">Send Message</button>
+  </form>
+  <p style="font-size: 0.9em; margin-top: 8px;">* All fields are required</p>
+</div>
 
-  <footer>
-    &copy; 2025 Soumya Kumar Sinha. All rights reserved.
-  </footer>
+<button id="darkModeToggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+
+<footer>
+  &copy; 2025 Soumya Kumar Sinha | Designed by Me
+</footer>
+
+<script>
+  const toggleBtn = document.getElementById('darkModeToggle');
+  const currentTheme = localStorage.getItem('theme');
+  
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    toggleBtn.textContent = '☀️ Light Mode';
+  }
+  
+  toggleBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.removeItem('theme');
+      toggleBtn.textContent = '🌙 Dark Mode';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      toggleBtn.textContent = '☀️ Light Mode';
+    }
+  });
+</script>
 
 </body>
 </html>
