@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Name - Portfolio</title>
+</head>
+<body>
+  <h1>Hello, I'm [Your Name]</h1>
+  <p>I'm a B.Tech student passionate about Physics, Data Science, and Technology.</p>
+
+  <h2>Certifications</h2>
+  <ul>
+    <li>MITx - Computational Data Science in Physics</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+    <li><a href="https://github.com/yourusername/mitx-project">Physics Simulation Project</a></li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>Email: yourname@email.com</p>
+</body>
+</html>
