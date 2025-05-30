@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head> 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,24 +16,24 @@
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
   }
- :root[data-theme="light"], :root:not([data-theme]) {
-  --bg-color: #f4f4f4;
-  --text-color: #333;
-  --header-bg: #1e293b;
-  --link-color: #1e40af;
-  --link-hover: #374fc6;
-  --input-bg: #fff;
-  --input-border: #ccc;
-}
-:root[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #eee;
-  --header-bg: #0f172a;
-  --link-color: #82aaff;
-  --link-hover: #a1c6ff;
-  --input-bg: #222;
-  --input-border: #444;
-}
+  :root[data-theme="light"], :root:not([data-theme]) {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #1e293b;
+    --link-color: #1e40af;
+    --link-hover: #374fc6;
+    --input-bg: #fff;
+    --input-border: #ccc;
+  }
+  :root[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #eee;
+    --header-bg: #0f172a;
+    --link-color: #82aaff;
+    --link-hover: #a1c6ff;
+    --input-bg: #222;
+    --input-border: #444;
+  }
 
   /* Header */
   header {
@@ -247,17 +247,13 @@
     </a>
   </div>
 
-  <form
-  action="https://formspree.io/f/xgvkbael" method="POST">
+  <form action="https://formspree.io/f/xgvkbael" method="POST">
     <label for="name">Name *</label>
     <input type="text" id="name" name="name" placeholder="Your name" required />
-
     <label for="email">Email *</label>
     <input type="email" id="email" name="_replyto" placeholder="Your email" required />
-
     <label for="message">Message *</label>
     <textarea id="message" name="message" rows="5" placeholder="Your message here" required></textarea>
-
     <button type="submit">Send Message</button>
   </form>
   <p style="font-size: 0.9em; margin-top: 8px;">* All fields are required</p>
@@ -271,33 +267,22 @@
 
 <script>
   const toggleBtn = document.getElementById('darkModeToggle');
-  const rootElement = document.documentElement;
+  const root = document.documentElement;
 
-  // Apply saved theme on load
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  if (currentTheme === 'dark') {
-    rootElement.setAttribute('data-theme', 'dark');
-    toggleBtn.textContent = '☀️ Light Mode';
-  } else {
-    rootElement.setAttribute('data-theme', 'light');
-    toggleBtn.textContent = '🌙 Dark Mode';
-  }
+  const setTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    toggleBtn.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  };
 
-  // Toggle theme on click
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+
   toggleBtn.addEventListener('click', () => {
-    const theme = rootElement.getAttribute('data-theme');
-    if (theme === 'dark') {
-      rootElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-      toggleBtn.textContent = '🌙 Dark Mode';
-    } else {
-      rootElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      toggleBtn.textContent = '☀️ Light Mode';
-    }
+    const current = root.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
   });
 </script>
-
 
 </body>
 </html>
