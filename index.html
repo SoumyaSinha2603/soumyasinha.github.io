@@ -271,26 +271,33 @@
 
 <script>
   const toggleBtn = document.getElementById('darkModeToggle');
-  const currentTheme = localStorage.getItem('theme');
-  
+  const rootElement = document.documentElement;
+
+  // Apply saved theme on load
+  const currentTheme = localStorage.getItem('theme') || 'light';
   if (currentTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    rootElement.setAttribute('data-theme', 'dark');
     toggleBtn.textContent = '☀️ Light Mode';
+  } else {
+    rootElement.setAttribute('data-theme', 'light');
+    toggleBtn.textContent = '🌙 Dark Mode';
   }
-  
+
+  // Toggle theme on click
   toggleBtn.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
+    const theme = rootElement.getAttribute('data-theme');
     if (theme === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.removeItem('theme');
+      rootElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
       toggleBtn.textContent = '🌙 Dark Mode';
     } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      rootElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
       toggleBtn.textContent = '☀️ Light Mode';
     }
   });
 </script>
+
 
 </body>
 </html>
